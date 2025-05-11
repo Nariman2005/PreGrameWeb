@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Your Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --muted-foreground: #64748b;
+      --galaxy-gradient-start-rgb: 189, 147, 249;
+      --galaxy-gradient-end-rgb: 139, 233, 253;
+      --card-rgb: 22, 33, 62;
+    }
+
+    /* Dark Purple Theme */
+    .theme-wrapper {
+      --background: #1a1a2e;
+      --foreground: #f8fafc;
+      --muted: #16213e;
+      --muted-foreground: #94a3b8;
+      --card: #16213e;
+      --card-foreground: #f8fafc;
+      --popover: #1a1a2e;
+      --popover-foreground: #f8fafc;
+      --border: #334155;
+      --input: #16213e;
+      --primary: #f8fafc;
+      --primary-foreground: #1a1a2e;
+      --secondary: #334155;
+      --secondary-foreground: #f8fafc;
+      --accent: #475569;
+      --accent-foreground: #f8fafc;
+      --destructive: #7f1d1d;
+      --destructive-foreground: #f8fafc;
+      --ring: #1e293b;
+      --radius: 0.5rem;
+      --galaxy-gradient-start: #bd93f9;
+      --galaxy-gradient-end: #8be9fd;
+      transition: all 0.3s ease;
+    }
+
+    /* Light Theme */
+    .theme-wrapper.light {
+      --background: #f8fafc;
+      --foreground: #1a1a2e;
+      --muted: #e2e8f0;
+      --muted-foreground: #64748b;
+      --card: #ffffff;
+      --card-foreground: #1a1a2e;
+      --popover: #ffffff;
+      --popover-foreground: #1a1a2e;
+      --border: #e2e8f0;
+      --input: #f1f5f9;
+      --primary: #1a1a2e;
+      --primary-foreground: #f8fafc;
+      --secondary: #e2e8f0;
+      --secondary-foreground: #1a1a2e;
+      --accent: #cbd5e1;
+      --accent-foreground: #1a1a2e;
+      --destructive: #ef4444;
+      --destructive-foreground: #f8fafc;
+      --ring: #94a3b8;
+      --galaxy-gradient-start: #5f2c82;
+      --galaxy-gradient-end: #49a09d;
+      --galaxy-gradient-start-rgb: 95, 44, 130;
+      --galaxy-gradient-end-rgb: 73, 160, 157;
+      --card-rgb: 255, 255, 255;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      padding: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        #2a1b3d 0%,
+        #1a1a2e 50%,
+        #16213e 100%
+      );
+      z-index: -2;
+      transition: all 0.3s ease;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(189, 147, 249, 0.1) 0%,
+        transparent 70%
+      );
+      z-index: -1;
+      transition: all 0.3s ease;
+    }
+
+    .theme-wrapper.light body::before {
+      background: linear-gradient(
+        135deg,
+        #f0e6ff 0%,
+        #f8fafc 50%,
+        #e2e8f0 100%
+      );
+    }
+
+    .theme-wrapper.light body::after {
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(95, 44, 130, 0.05) 0%,
+        transparent 70%
+      );
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #bd93f9, #8be9fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      position: relative;
+      text-shadow: 0 0 20px rgba(189, 147, 249, 0.3);
+    }
+
+    .logo-message {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      max-width: 300px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+      flex: 2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background-color: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-wrapper.light .card {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(189, 147, 249, 0.03) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .theme-wrapper.light .card::before {
+      background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(95, 44, 130, 0.02) 50%,
+        transparent 100%
+      );
+    }
+
+    .card-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .welcome-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-align: center;
+      line-height: 1.2;
+      background: linear-gradient(to right, var(--galaxy-gradient-start), var(--galaxy-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .card-description {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .input {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 2px solid var(--primary);
+      background-color: var(--card);
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--foreground);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(248, 250, 252, 0.2);
+    }
+
+    .textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: var(--radius);
+      border: 2px solid var(--primary);
+      background-color: var(--card);
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--foreground);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: vertical;
+    }
+
+    .textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(248, 250, 252, 0.2);
+    }
+
+    .char-counter {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+
+    .char-counter.warning {
+      color: var(--destructive);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      border: none;
+    }
+
+    .button-primary:hover {
+      background-color: var(--primary);
+      opacity: 0.9;
+    }
+
+    .button-full {
+      width: 100%;
+    }
+
+    .error-message {
+      color: var(--destructive);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      margin-top: 0.5rem;
+    }
+
+    .file-input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-input-label {
+      display: inline-block;
+      padding: 0.75rem 1rem;
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      border-radius: var(--radius);
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+
+    .file-name {
+      margin-top: 0.5rem;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+    }
+
+    .game-size {
+      margin-top: 0.5rem;
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .game-size svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .upload-confirmation {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--foreground);
+      font-size: 0.875rem;
+      display: none;
+    }
+
+    .upload-confirmation.visible {
+      display: block;
+    }
+
+    .upload-confirmation.success {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: rgb(34, 197, 94);
+    }
+
+    .upload-confirmation.error {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: var(--destructive);
+    }
+
+    .esrb-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      border: 2px solid var(--primary);
+      background-color: var(--card);
+      color: var(--foreground);
+      font-size: 1rem;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f8fafc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+
+    .esrb-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(248, 250, 252, 0.2);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .logo-section {
+        padding: 1rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0.5rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card);
+      border: 2px solid var(--border);
+      color: var(--foreground);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .theme-toggle svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      transition: transform 0.3s ease;
+      color: var(--foreground);
+    }
+
+    .theme-toggle:hover svg {
+      transform: rotate(15deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-wrapper">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    </button>
+    <div class="container">
+      <div class="logo-section">
+        <div class="logo">Pregame</div>
+        <div class="logo-message">
+          Share your game with the world. Upload your masterpiece and let gamers discover your creation.
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="welcome-title">Upload Your Game</h1>
+            <h2 class="card-title">Game Information</h2>
+            <p class="card-description">Fill in the details about your game</p>
+          </div>
+          <form id="upload-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="game-title">Game Title</label>
+                <input type="text" id="game-title" class="input" placeholder="Enter your game title" required />
+                <div class="error-message" id="title-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="version">Version</label>
+                <input type="text" id="version" class="input" placeholder="e.g., 1.0.0" required />
+                <div class="error-message" id="version-error"></div>
+              </div>
+
+              <div class="form-group" style="grid-column: span 2;">
+                <label for="description">Game Description</label>
+                <textarea 
+                  id="description" 
+                  class="textarea" 
+                  placeholder="Write a brief but strong description of your game. What makes it unique? What's the gameplay like? (Max 500 characters)"
+                  maxlength="500"
+                  required
+                ></textarea>
+                <div class="char-counter" id="char-counter">0/500 characters</div>
+                <div class="error-message" id="description-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label>ESRB Rating</label>
+                <select id="esrb" class="esrb-select" required>
+                  <option value="">Select ESRB Rating</option>
+                  <option value="Everyone">Everyone</option>
+                  <option value="Everyone 10+">Everyone 10+</option>
+                  <option value="Teen">Teen</option>
+                  <option value="Mature">Mature</option>
+                  <option value="Adults Only">Adults Only</option>
+                </select>
+                <div class="error-message" id="esrb-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label>Game Project Folder</label>
+                <div class="file-input-wrapper">
+                  <input type="file" id="game-folder" class="file-input" webkitdirectory directory required />
+                  <span class="file-input-label">Choose Game Project Folder</span>
+                </div>
+                <div class="file-name" id="folder-name"></div>
+                <div class="game-size" id="game-size">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span>No files selected</span>
+                </div>
+                <div class="upload-confirmation" id="upload-confirmation"></div>
+                <div class="error-message" id="folder-error"></div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.5rem;">
+              <button type="submit" class="button button-primary button-full">Upload Game</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('upload-form');
+    const gameFolder = document.getElementById('game-folder');
+    const folderName = document.getElementById('folder-name');
+    const gameSize = document.getElementById('game-size');
+
+    // Handle folder selection
+    gameFolder.addEventListener('change', function() {
+      const uploadConfirmation = document.getElementById('upload-confirmation');
+      const gameSize = document.getElementById('game-size');
+      const folderName = document.getElementById('folder-name');
+      
+      if (this.files.length > 0) {
+        folderName.textContent = this.files[0].webkitRelativePath.split('/')[0];
+        
+        // Calculate total size
+        let totalSize = 0;
+        for (let i = 0; i < this.files.length; i++) {
+          totalSize += this.files[i].size;
+        }
+        
+        // Format size
+        const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
+        const sizeInGB = (totalSize / (1024 * 1024 * 1024)).toFixed(2);
+        
+        // Update size display
+        gameSize.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>Total Size: ${sizeInMB} MB (${sizeInGB} GB)</span>
+        `;
+
+        // Show upload confirmation
+        uploadConfirmation.textContent = `Successfully selected ${this.files.length} files from "${this.files[0].webkitRelativePath.split('/')[0]}"`;
+        uploadConfirmation.className = 'upload-confirmation visible success';
+
+        // Check file types
+        const allowedExtensions = ['.exe', '.dll', '.json', '.txt', '.png', '.jpg', '.jpeg', '.gif', '.mp3', '.wav', '.ogg'];
+        let hasInvalidFiles = false;
+        let invalidFiles = [];
+        
+        for (let i = 0; i < this.files.length; i++) {
+          const file = this.files[i];
+          const extension = '.' + file.name.split('.').pop().toLowerCase();
+          if (!allowedExtensions.includes(extension)) {
+            hasInvalidFiles = true;
+            invalidFiles.push(file.name);
+          }
+        }
+
+        if (hasInvalidFiles) {
+          uploadConfirmation.textContent = `Warning: ${invalidFiles.length} invalid file(s) found. Allowed extensions: .exe, .dll, .json, .txt, .png, .jpg, .jpeg, .gif, .mp3, .wav, .ogg`;
+          uploadConfirmation.className = 'upload-confirmation visible error';
+        }
+
+        // Check total size
+        const maxSize = 2 * 1024 * 1024 * 1024; // 2GB
+        if (totalSize > maxSize) {
+          uploadConfirmation.textContent = `Error: Game folder size (${sizeInGB} GB) exceeds the maximum limit of 2GB`;
+          uploadConfirmation.className = 'upload-confirmation visible error';
+        }
+      } else {
+        folderName.textContent = '';
+        gameSize.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>No files selected</span>
+        `;
+        uploadConfirmation.className = 'upload-confirmation';
+      }
+    });
+
+    // Description character counter
+    const description = document.getElementById('description');
+    const charCounter = document.getElementById('char-counter');
+
+    description.addEventListener('input', function() {
+      const currentLength = this.value.length;
+      const maxLength = this.getAttribute('maxlength');
+      charCounter.textContent = `${currentLength}/${maxLength} characters`;
+      
+      if (currentLength > maxLength * 0.9) {
+        charCounter.classList.add('warning');
+      } else {
+        charCounter.classList.remove('warning');
+      }
+    });
+
+    // Form validation
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Game title validation
+      const title = document.getElementById('game-title');
+      if (!title.value.trim()) {
+        document.getElementById('title-error').textContent = 'Game title is required';
+        document.getElementById('title-error').style.display = 'block';
+        isValid = false;
+      } else if (title.value.length < 3) {
+        document.getElementById('title-error').textContent = 'Game title must be at least 3 characters long';
+        document.getElementById('title-error').style.display = 'block';
+        isValid = false;
+      } else if (title.value.length > 100) {
+        document.getElementById('title-error').textContent = 'Game title must not exceed 100 characters';
+        document.getElementById('title-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('title-error').style.display = 'none';
+      }
+
+      // Game folder validation
+      if (!gameFolder.files.length) {
+        document.getElementById('folder-error').textContent = 'Please select a game folder';
+        document.getElementById('folder-error').style.display = 'block';
+        isValid = false;
+      } else {
+        // Check file types
+        const allowedExtensions = ['.exe', '.dll', '.json', '.txt', '.png', '.jpg', '.jpeg', '.gif', '.mp3', '.wav', '.ogg'];
+        let hasInvalidFiles = false;
+        for (let i = 0; i < gameFolder.files.length; i++) {
+          const file = gameFolder.files[i];
+          const extension = '.' + file.name.split('.').pop().toLowerCase();
+          if (!allowedExtensions.includes(extension)) {
+            hasInvalidFiles = true;
+            break;
+          }
+        }
+        if (hasInvalidFiles) {
+          document.getElementById('folder-error').textContent = 'Folder contains invalid file types. Allowed: .exe, .dll, .json, .txt, .png, .jpg, .jpeg, .gif, .mp3, .wav, .ogg';
+          document.getElementById('folder-error').style.display = 'block';
+          isValid = false;
+        } else {
+          // Check total size
+          let totalSize = 0;
+          for (let i = 0; i < gameFolder.files.length; i++) {
+            totalSize += gameFolder.files[i].size;
+          }
+          const maxSize = 2 * 1024 * 1024 * 1024; // 2GB
+          if (totalSize > maxSize) {
+            document.getElementById('folder-error').textContent = 'Game folder size must not exceed 2GB';
+            document.getElementById('folder-error').style.display = 'block';
+            isValid = false;
+          } else {
+            document.getElementById('folder-error').style.display = 'none';
+          }
+        }
+      }
+
+      // ESRB rating validation
+      const esrb = document.getElementById('esrb');
+      if (!esrb.value) {
+        document.getElementById('esrb-error').textContent = 'Please select an ESRB rating';
+        document.getElementById('esrb-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('esrb-error').style.display = 'none';
+      }
+
+      // Version validation
+      const version = document.getElementById('version');
+      const versionRegex = /^\d+\.\d+\.\d+$/;
+      if (!versionRegex.test(version.value)) {
+        document.getElementById('version-error').textContent = 'Please enter a valid version (e.g., 1.0.0)';
+        document.getElementById('version-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('version-error').style.display = 'none';
+      }
+
+      // Description validation
+      if (!description.value.trim()) {
+        document.getElementById('description-error').textContent = 'Game description is required';
+        document.getElementById('description-error').style.display = 'block';
+        isValid = false;
+      } else if (description.value.length < 50) {
+        document.getElementById('description-error').textContent = 'Description must be at least 50 characters long';
+        document.getElementById('description-error').style.display = 'block';
+        isValid = false;
+      } else if (description.value.length > 500) {
+        document.getElementById('description-error').textContent = 'Description must not exceed 500 characters';
+        document.getElementById('description-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('description-error').style.display = 'none';
+      }
+
+      if (isValid) {
+        // Here you would typically send the form data to your server
+        console.log('Form is valid, ready to submit');
+        // form.submit();
+      }
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeWrapper = document.querySelector('.theme-wrapper');
+    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2"></path>
+      <path d="M12 20v2"></path>
+      <path d="m4.93 4.93 1.41 1.41"></path>
+      <path d="m17.66 17.66 1.41 1.41"></path>
+      <path d="M2 12h2"></path>
+      <path d="M20 12h2"></path>
+      <path d="m6.34 17.66-1.41 1.41"></path>
+      <path d="m19.07 4.93-1.41 1.41"></path>
+    </svg>`;
+    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>`;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      themeWrapper.classList.add('light');
+      themeToggle.innerHTML = sunIcon;
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeWrapper.classList.toggle('light');
+      const isLight = themeWrapper.classList.contains('light');
+      themeToggle.innerHTML = isLight ? sunIcon : moonIcon;
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

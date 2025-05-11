@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Developer Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --muted-foreground: #64748b;
+    }
+
+    /* Light Theme */
+    .theme-wrapper {
+      --background: #ffffff;
+      --foreground: #020817;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --card: #ffffff;
+      --card-foreground: #020817;
+      --popover: #ffffff;
+      --popover-foreground: #020817;
+      --border: #e2e8f0;
+      --input: #e2e8f0;
+      --primary: #0f172a;
+      --primary-foreground: #f8fafc;
+      --secondary: #e2e8f0;
+      --secondary-foreground: #0f172a;
+      --accent: #cbd5e1;
+      --accent-foreground: #0f172a;
+      --destructive: #ef4444;
+      --destructive-foreground: #f8fafc;
+      --ring: #94a3b8;
+      --radius: 0.5rem;
+      --galaxy-gradient-start: #5f2c82;
+      --galaxy-gradient-end: #49a09d;
+    }
+
+    /* Dark Theme */
+    .theme-wrapper.dark {
+      --background: #020817;
+      --foreground: #f8fafc;
+      --muted: #1e293b;
+      --muted-foreground: #94a3b8;
+      --card: #1e293b;
+      --card-foreground: #f8fafc;
+      --popover: #020817;
+      --popover-foreground: #f8fafc;
+      --border: #334155;
+      --input: #1e293b;
+      --primary: #f8fafc;
+      --primary-foreground: #020817;
+      --secondary: #334155;
+      --secondary-foreground: #f8fafc;
+      --accent: #475569;
+      --accent-foreground: #f8fafc;
+      --destructive: #7f1d1d;
+      --destructive-foreground: #f8fafc;
+      --ring: #1e293b;
+      --galaxy-gradient-start: #bd93f9;
+      --galaxy-gradient-end: #8be9fd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: transparent;
+      color: var(--foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card {
+      background-color: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .card-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .welcome-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-align: center;
+      line-height: 1.2;
+      background: linear-gradient(to right, var(--galaxy-gradient-start), var(--galaxy-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .input {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 2px solid var(--primary);
+      background-color: var(--card);
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--foreground);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.2);
+    }
+
+    .theme-wrapper.dark .input {
+      border-color: var(--primary-foreground);
+      background-color: var(--card);
+    }
+
+    .theme-wrapper.dark .input:focus {
+      border-color: var(--primary-foreground);
+      box-shadow: 0 0 0 3px rgba(248, 250, 252, 0.2);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      border: none;
+    }
+
+    .button-primary:hover {
+      background-color: var(--primary);
+      opacity: 0.9;
+    }
+
+    .button-full {
+      width: 100%;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+    }
+
+    .mode-toggle:hover {
+      background-color: var(--secondary);
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .error-message {
+      color: var(--destructive);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .country-code {
+      width: 80px;
+    }
+
+    .telephone {
+      flex: 1;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .form-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .password-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .password-toggle:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+  <video class="background-video" autoplay loop muted playsinline>
+    <source src="assets/videos/OptionPlay(1).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+
+  <div class="theme-wrapper">
+    <button class="mode-toggle" id="toggle-mode" aria-label="Toggle dark mode">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+    </button>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="welcome-title">Join Our Developer Community</h1>
+          <h2 class="card-title">Create Your Developer Account</h2>
+          <p class="card-description">Fill in your details to start your game development journey</p>
+        </div>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="company-name">Company/Studio Name</label>
+            <input type="text" id="company-name" class="input" placeholder="Enter your company/studio name" required />
+            <div class="error-message" id="company-name-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="input" placeholder="Enter your full name" required />
+            <div class="error-message" id="name-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="input" placeholder="name@example.com" required />
+            <div class="error-message" id="email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input-group">
+              <input type="password" id="password" class="input" placeholder="Create a password" required />
+              <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div class="error-message" id="password-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <div class="password-input-group">
+              <input type="password" id="confirm-password" class="input" placeholder="Confirm your password" required />
+              <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div class="error-message" id="confirm-password-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" class="input" required />
+            <div class="error-message" id="dob-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <div class="input-group">
+              <input type="text" id="country-code" class="input country-code" placeholder="+1" required />
+              <input type="tel" id="telephone" class="input telephone" placeholder="Your phone number" required />
+            </div>
+            <div class="error-message" id="phone-error"></div>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <button type="submit" class="button button-primary button-full">Create Account</button>
+          </div>
+        </form>
+
+        <div class="form-footer">
+          <p>Already have an account? <a href="SignIn.html">Sign in</a></p>
+          <p style="margin-top: 0.5rem;">Are you a Gamer? <a href="SignUpGamer.html"
+              style="color: var(--primary); font-weight: 600;">Sign up as Gamer</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-mode');
+    const themeWrapper = document.querySelector('.theme-wrapper');
+
+    toggleButton.addEventListener('click', () => {
+      themeWrapper.classList.toggle('dark');
+
+      if (themeWrapper.classList.contains('dark')) {
+        toggleButton.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        `;
+      } else {
+        toggleButton.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        `;
+      }
+    });
+
+    // Form validation
+    const form = document.getElementById('signup-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('telephone');
+    const countryCode = document.getElementById('country-code');
+    const dob = document.getElementById('dob');
+    const companyName = document.getElementById('company-name');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Company name validation
+      if (!companyName.value.trim()) {
+        document.getElementById('company-name-error').textContent = 'Company/Studio name is required';
+        document.getElementById('company-name-error').style.display = 'block';
+        isValid = false;
+      } else if (companyName.value.length < 2) {
+        document.getElementById('company-name-error').textContent = 'Company/Studio name must be at least 2 characters long';
+        document.getElementById('company-name-error').style.display = 'block';
+        isValid = false;
+      } else if (companyName.value.length > 100) {
+        document.getElementById('company-name-error').textContent = 'Company/Studio name must not exceed 100 characters';
+        document.getElementById('company-name-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('company-name-error').style.display = 'none';
+      }
+
+      // Full name validation
+      const name = document.getElementById('name');
+      const nameRegex = /^[a-zA-Z\s'-]{2,50}$/;
+      if (!name.value.trim()) {
+        document.getElementById('name-error').textContent = 'Full name is required';
+        document.getElementById('name-error').style.display = 'block';
+        isValid = false;
+      } else if (!nameRegex.test(name.value)) {
+        document.getElementById('name-error').textContent = 'Please enter a valid full name (2-50 characters, letters, spaces, hyphens, and apostrophes only)';
+        document.getElementById('name-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('name-error').style.display = 'none';
+      }
+
+      // Password validation
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (password.value.length < 8) {
+        document.getElementById('password-error').textContent = 'Password must be at least 8 characters long';
+        document.getElementById('password-error').style.display = 'block';
+        isValid = false;
+      } else if (!passwordRegex.test(password.value)) {
+        document.getElementById('password-error').textContent = 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character';
+        document.getElementById('password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('password-error').style.display = 'none';
+      }
+
+      // Confirm password validation
+      if (password.value !== confirmPassword.value) {
+        document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
+        document.getElementById('confirm-password-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('confirm-password-error').style.display = 'none';
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        document.getElementById('email-error').textContent = 'Please enter a valid email address';
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('email-error').style.display = 'none';
+      }
+
+      // Phone validation
+      const countryCodeRegex = /^\+\d{1,4}$/;
+      const phoneRegex = /^\d{10,}$/;
+      if (!countryCodeRegex.test(countryCode.value)) {
+        document.getElementById('phone-error').textContent = 'Please enter a valid country code (e.g., +1)';
+        document.getElementById('phone-error').style.display = 'block';
+        isValid = false;
+      } else if (!phoneRegex.test(phone.value)) {
+        document.getElementById('phone-error').textContent = 'Please enter a valid phone number (at least 10 digits)';
+        document.getElementById('phone-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('phone-error').style.display = 'none';
+      }
+
+      // Date of birth validation
+      const today = new Date();
+      const dobDate = new Date(dob.value);
+      const age = today.getFullYear() - dobDate.getFullYear();
+      if (age < 18) {
+        document.getElementById('dob-error').textContent = 'You must be at least 18 years old';
+        document.getElementById('dob-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('dob-error').style.display = 'none';
+      }
+
+      if (isValid) {
+        // Here you would typically send the form data to your server
+        console.log('Form is valid, ready to submit');
+        // form.submit();
+      }
+    });
+
+    // Password visibility toggle function
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const button = input.nextElementSibling;
+      const icon = button.querySelector('svg');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M9 12a3 3 0 0 0 6 0"></path>
+        `;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Profile</title>
+    <link rel="stylesheet" href="assets/css/profiles/profile.css">
+</head>
+
+<body>
+
+    <!-- Gamer Profile (hidden by default) -->
+    <div id="gamer-profile" class="profile-section">
+        <div class="profile-card">
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <img src="https://github.com/shadcn.png" alt="Profile" class="avatar">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <h1 style="font-size: 2rem; margin: 0;">GamePro99</h1>
+                        <span class="badge badge-gamer">Pro Tester</span>
+                    </div>
+                    <p style="opacity: 0.8; margin: 0.5rem 0;">Professional game tester | Member since 2022</p>
+                    <p style="margin: 1rem 0;">I specialize in finding bugs and providing detailed feedback to help
+                        developers improve their games.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <button class="rt-Button rt-variant-primary">Hire Me</button>
+                        <button class="rt-Button rt-variant-outline">Message</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="rt-Text rt-size-3" style="opacity: 0.7;">Games Tested</div>
+                    <div class="rt-Text rt-size-6" style="font-size: 1.5rem; font-weight: bold;">47</div>
+                </div>
+                <div class="stat-card">
+                    <div class="rt-Text rt-size-3" style="opacity: 0.7;">Earnings</div>
+                    <div class="rt-Text rt-size-6" style="font-size: 1.5rem; font-weight: bold;">$1,245</div>
+                </div>
+                <div class="stat-card">
+                    <div class="rt-Text rt-size-3" style="opacity: 0.7;">Tester Rank</div>
+                    <div class="rt-Text rt-size-6" style="font-size: 1.5rem; font-weight: bold;">Diamond</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Testing Specializations</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
+                <span class="pill" style="background: rgba(127, 0, 255, 0.2);">FPS</span>
+                <span class="pill" style="background: rgba(0, 255, 150, 0.2);">RPG</span>
+                <span class="pill" style="background: rgba(127, 0, 255, 0.2);">Multiplayer</span>
+                <span class="pill" style="background: rgba(0, 255, 150, 0.2);">Balance</span>
+                <span class="pill" style="background: rgba(127, 0, 255, 0.2);">Performance</span>
+                <span class="pill" style="background: rgba(0, 255, 150, 0.2);">UI/UX</span>
+            </div>
+
+            <h2 class="section-title">Recent Testing Activity</h2>
+            <div class="rt-TableRoot">
+                <table class="rt-Table">
+                    <thead>
+                        <tr class="rt-TableRow">
+                            <th class="rt-TableColumnHeaderCell">Game</th>
+                            <th class="rt-TableColumnHeaderCell">Developer</th>
+                            <th class="rt-TableColumnHeaderCell">Type</th>
+                            <th class="rt-TableColumnHeaderCell">Earnings</th>
+                            <th class="rt-TableColumnHeaderCell">Rating</th>
+                            <th class="rt-TableColumnHeaderCell">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="rt-TableRow">
+                            <td class="rt-TableCell">Nebula Drift</td>
+                            <td class="rt-TableCell">DevMaster</td>
+                            <td class="rt-TableCell">Stress Test</td>
+                            <td class="rt-TableCell">$25</td>
+                            <td class="rt-TableCell">★★★★★</td>
+                            <td class="rt-TableCell"><span style="color: hsl(var(--secondary));">Completed</span></td>
+                        </tr>
+                        <tr class="rt-TableRow">
+                            <td class="rt-TableCell">Shadow Protocol</td>
+                            <td class="rt-TableCell">DevMaster</td>
+                            <td class="rt-TableCell">Bug Hunt</td>
+                            <td class="rt-TableCell">$45</td>
+                            <td class="rt-TableCell">★★★★☆</td>
+                            <td class="rt-TableCell"><span style="color: hsl(var(--secondary));">Completed</span></td>
+                        </tr>
+                        <tr class="rt-TableRow">
+                            <td class="rt-TableCell">Cyber Arena</td>
+                            <td class="rt-TableCell">NeonGames</td>
+                            <td class="rt-TableCell">Balance</td>
+                            <td class="rt-TableCell">$15</td>
+                            <td class="rt-TableCell">★★★☆☆</td>
+                            <td class="rt-TableCell"><span style="color: #ff4d4d;">Rejected</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-title">Available Testing Jobs</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Game Cover">
+                    <div class="game-card-content">
+                        <h3 style="margin: 0 0 0.5rem;">Nebula Drift</h3>
+                        <div>
+                            <span class="pill">Racing</span>
+                            <span class="pill">VR</span>
+                            <span class="pill">$25</span>
+                        </div>
+                        <p style="opacity: 0.8; font-size: 0.9rem; margin: 0.5rem 0;">Looking for testers to stress test
+                            multiplayer servers</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <span>5 slots remaining</span>
+                            <button class="rt-Button rt-size-1 rt-variant-primary">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Game Cover">
+                    <div class="game-card-content">
+                        <h3 style="margin: 0 0 0.5rem;">Shadow Protocol</h3>
+                        <div>
+                            <span class="pill">Stealth</span>
+                            <span class="pill">$5/bug</span>
+                        </div>
+                        <p style="opacity: 0.8; font-size: 0.9rem; margin: 0.5rem 0;">Bug hunting for AI pathfinding
+                            issues</p>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <span>Unlimited</span>
+                            <button class="rt-Button rt-size-1 rt-variant-primary">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Import shadcn/ui scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@radix-ui/themes@latest/dist/radix-themes.umd.min.js"></script>
+
+    <script>
+        function switchProfile(profileType) {
+            // Update tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show selected profile
+            document.querySelectorAll('.profile-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(`${profileType}-profile`).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
