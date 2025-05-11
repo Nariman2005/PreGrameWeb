@@ -1,0 +1,162 @@
+/* ====================================
+   CTA Section Container
+   ==================================== */
+.cta-section {
+    position: relative;
+    padding: 120px 20px;
+    background: transparent;
+    overflow: hidden;
+    margin-top: 60px;
+    width: 100%;
+}
+
+/* ====================================
+   CTA Content Container
+   ==================================== */
+.cta-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+    background: rgba(179, 136, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(179, 136, 255, 0.1);
+    border-radius: 30px;
+    padding: 60px 40px;
+}
+
+/* ====================================
+   Background Glow Effect
+   ==================================== */
+.cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(179, 136, 255, 0.1) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%);
+    animation: glowPulse 4s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ====================================
+   Statistics Section
+   ==================================== */
+.cta-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 50px 0;
+}
+
+/* Statistics Cards */
+.stat-item {
+    background: rgba(179, 136, 255, 0.1);
+    border: 1px solid rgba(179, 136, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    min-width: 200px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(179, 136, 255, 0.2);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 30px rgba(124, 77, 255, 0.2);
+}
+
+/* Statistics Text Styles */
+.stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    color: #7C4DFF;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.stat-label {
+    font-size: 18px;
+    color: #B388FF;
+}
+
+/* ====================================
+   Button Styles
+   ==================================== */
+/* Primary Button */
+.primary-button {
+    background: linear-gradient(45deg, #7C4DFF, #2563EB);
+    border: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 25px rgba(124, 77, 255, 0.6);
+}
+
+
+/* Button Container */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* ====================================
+   Responsive Design
+   ==================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .cta-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stat-item {
+        min-width: auto;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* ====================================
+   Spline Viewer
+   ==================================== */
+spline-viewer {
+    width: 100%;
+    height: 100%;
+}

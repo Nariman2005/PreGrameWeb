@@ -1,0 +1,124 @@
+/* other css file imports */
+/* Importing styles for different sections of the homepage */
+@import url("HomePage/Hero.css");
+@import url("HomePage/Header.css");
+@import url("HomePage/aboutsection.css");
+@import url("HomePage/roleselection.css");
+@import url("HomePage/CTA.css");
+@import url("HomePage/footer.css");
+@import url(profiles/profile.css);
+
+
+
+
+/* Basic body styling */
+body {
+    /* Remove default margin and padding */
+    margin: 0;
+    padding: 0;
+    /* Set background color */
+    background: #000000;
+    /* Ensure body takes at least the full viewport height */
+    min-height: 100vh;
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    /* Set default font */
+    font-family: 'Play', sans-serif;
+}
+
+/* Container for the star background effect */
+.stars-container {
+    /* Fix position to cover the entire viewport */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* Ensure stars are behind other content */
+    z-index: 0;
+    /* Prevent stars from interfering with mouse events */
+    pointer-events: none;
+}
+
+/* Sass function to generate multiple box-shadows for stars */
+@function multiple-box-shadow($n) {
+    /* Define an array of star colors */
+    $colors: (
+        #B388FF,
+        #7C4DFF,
+        #2563EB,
+        #60A5FA
+    );
+/* Initialize an empty string for the box-shadow value */
+$value: '';
+
+/* Loop to generate n box-shadows */
+@for $i from 1 through $n {
+    /* Pick a random color from the array */
+    $color: nth($colors, random(length($colors)));
+    /* Append a new box-shadow rule with random position and the chosen color */
+    /* Format: x-offset y-offset color */
+    $value: '#{$value}#{if($i != 1, ', ', ' ')} #{random(2000)}px #{random(2000)}px #{$color}';
+}
+
+/* Return the generated box-shadow string */
+@return unquote($value);
+}
+
+/* Styling for the smallest stars */
+#stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    /* Apply 700 randomly positioned box-shadows (stars) */
+    box-shadow: multiple-box-shadow(700);
+    /* Animate the stars moving upwards */
+    animation: animStar 50s linear infinite;
+}
+
+/* Styling for medium-sized stars */
+#stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    /* Apply 200 randomly positioned box-shadows (stars) */
+    box-shadow: multiple-box-shadow(200);
+    /* Animate the stars moving upwards, slower than #stars */
+    animation: animStar 100s linear infinite;
+}
+
+/* Styling for the largest stars */
+#stars3 {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    /* Apply 100 randomly positioned box-shadows (stars) */
+    box-shadow: multiple-box-shadow(100);
+    /* Animate the stars moving upwards, slowest */
+    animation: animStar 150s linear infinite;
+}
+
+/* Keyframes for the star animation */
+@keyframes animStar {
+
+    /* Starting position */
+    from {
+        transform: translateY(0);
+    }
+
+    /* Ending position (move up by 2000px) */
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+/* Main content container */
+.container {
+    /* Set text color */
+    color: white;
+    /* Use flexbox for layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Ensure content is above the star background */
+    position: relative;
+    z-index: 1;
+}

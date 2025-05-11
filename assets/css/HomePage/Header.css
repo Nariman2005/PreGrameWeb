@@ -1,0 +1,76 @@
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    z-index: 999;
+    background-color: rgba(75, 75, 75, 0.2);
+    /* More transparent - last value controls opacity (0.0 to 1.0) */
+    backdrop-filter: blur(8px);
+}
+
+.head-left {
+    display: flex;
+    align-items: center;
+}
+
+.head-left img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.head-left button {
+    border: 1px solid white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: transparent;
+    color: white;
+}
+
+.head-left button:hover {
+    opacity: 1;
+    background-color: white;
+    color: black;
+}
+
+.head-right {
+    display: flex;
+    align-items: center;
+}
+
+.head-right a {
+    text-decoration: none;
+    padding-left: 25px;
+    color: white;
+    font-size: 15px;
+}
+
+/* Fixed duplicate selector */
+.head-right button {
+    border: 1px solid white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 15px;
+    background-color: transparent;
+    color: white;
+}
+
+.head-right button:hover {
+    opacity: 1;
+    /* Ensure full opacity on hover */
+    background-color: white;
+    /* Make background white on hover */
+    color: black;
+    /* Make text black on hover */
+}
