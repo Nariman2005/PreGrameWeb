@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Gaming Testing Platform</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6b46c1;
+            --secondary-color: #2d3748;
+            --accent-color: #9f7aea;
+            --background-dark: #1a202c;
+            --text-light: #f7fafc;
+            --text-gray: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+            background: var(--secondary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: var(--primary-color);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--accent-color);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--secondary-color);
+        }
+
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            min-width: 200px;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .faq-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Help Center</h1>
+            <p class="subtitle">Find answers to your questions about Gaming Testing Platform</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for help..." id="searchInput">
+        </div>
+
+        <!-- Common Issues Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Common Issues</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I create an account?</div>
+                <div class="faq-answer">
+                    To create an account, click the "Sign Up" button in the top right corner. You'll need to provide a valid email address, create a password, and select your user type (Gamer, Tester, or Developer). After registration, verify your email to activate your account.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I forgot my password. How can I reset it?</div>
+                <div class="faq-answer">
+                    Click the "Forgot Password" link on the login page. Enter your registered email address, and we'll send you a password reset link. Follow the instructions in the email to create a new password.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I verify my account?</div>
+                <div class="faq-answer">
+                    After registration, check your email for a verification link. Click the link to verify your account. If you didn't receive the email, check your spam folder or request a new verification email from your account settings.
+                </div>
+            </div>
+        </section>
+
+        <!-- Gamers Section -->
+        <section class="faq-section">
+            <h2 class="section-title">For Gamers</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I download and play games?</div>
+                <div class="faq-answer">
+                    Browse our game library and click on any game you're interested in. Click the "Download" button to start the download process. Once downloaded, launch the game through our platform's launcher.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are the system requirements?</div>
+                <div class="faq-answer">
+                    System requirements vary by game. You can find the specific requirements on each game's page. Generally, you'll need a Windows 10/11 PC with at least 8GB RAM and a dedicated graphics card for most games.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I report a bug in a game?</div>
+                <div class="faq-answer">
+                    While playing, press F1 to open the bug report menu. Fill in the details of the issue, including steps to reproduce and any error messages. You can also attach screenshots or video recordings of the bug.
+                </div>
+            </div>
+        </section>
+
+        <!-- Testers Section -->
+        <section class="faq-section">
+            <h2 class="section-title">For Testers</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I become a game tester?</div>
+                <div class="faq-answer">
+                    To become a tester, complete your profile and select "Tester" as your role. You'll need to pass a basic testing knowledge assessment. Once approved, you can apply for testing opportunities in the Testing Hub.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I submit bug reports?</div>
+                <div class="faq-answer">
+                    Use our Bug Report Tool to document issues. Include detailed steps to reproduce, expected vs. actual behavior, and any relevant screenshots or logs. Submit through the Testing Dashboard for review.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are the testing guidelines?</div>
+                <div class="faq-answer">
+                    Testers must follow our Testing Guidelines, which include thorough documentation, clear communication, and adherence to testing schedules. Guidelines are available in the Testing Hub under "Resources".
+                </div>
+            </div>
+        </section>
+
+        <!-- Developers Section -->
+        <section class="faq-section">
+            <h2 class="section-title">For Developers</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I upload my game?</div>
+                <div class="faq-answer">
+                    Go to the Developer Dashboard and click "Upload New Game". Follow the upload wizard to provide game details, upload files, and set up distribution settings. Your game will be reviewed before publication.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are the game submission requirements?</div>
+                <div class="faq-answer">
+                    Games must meet our technical requirements, include necessary documentation, and pass security checks. Required files include the game executable, installation instructions, and system requirements.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I update my published game?</div>
+                <div class="faq-answer">
+                    Access your game in the Developer Dashboard and select "Update Game". Upload the new version and provide release notes. Updates will be reviewed before being pushed to users.
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="faq-section contact-section">
+            <h2 class="section-title">Still Need Help?</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-gray);">
+                Can't find what you're looking for? Our support team is here to help!
+            </p>
+            <div style="text-align: center;">
+                <a href="ContactPage.html" class="contact-button">Contact Support</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+
+                // Close all other answers
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                });
+
+                // Toggle current answer
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                const isVisible = question.includes(searchTerm) || answer.includes(searchTerm);
+
+                item.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
