@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Gaming Testing Platform</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6b46c1;
+            --secondary-color: #2d3748;
+            --accent-color: #9f7aea;
+            --background-dark: #1a202c;
+            --text-light: #f7fafc;
+            --text-gray: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .section {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .user-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .user-type-card {
+            background: var(--background-dark);
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .user-type-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .user-type-title {
+            color: var(--accent-color);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--background-dark);
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>About Us</h1>
+            <p class="subtitle">Revolutionizing Game Development Through Community Testing</p>
+        </header>
+
+        <!-- Mission Section -->
+        <section class="section">
+            <h2 class="section-title">Our Mission</h2>
+            <p>We're building the future of game development by creating a powerful ecosystem that connects developers, gamers, and professional testers. Our platform enables developers to share their creations with the world while providing valuable feedback through our unique three-tier testing system.</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Active Developers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Gamers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Professional Testers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Games Launched</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Types Section -->
+        <section class="section">
+            <h2 class="section-title">Our Community</h2>
+            <div class="user-type-grid">
+                <div class="user-type-card">
+                    <h3 class="user-type-title">Developers</h3>
+                    <p>Share your games with a global audience and receive valuable feedback from both casual gamers and professional testers. Our platform provides the tools and community you need to refine and perfect your creations.</p>
+                    <a href="SignUpGameDeveloper.html" class="cta-button">Join as Developer</a>
+                </div>
+
+                <div class="user-type-card">
+                    <h3 class="user-type-title">Gamers</h3>
+                    <p>Get paid to play and test new games! Share your gaming experience and help shape the future of gaming. Your feedback is invaluable to developers and helps create better gaming experiences for everyone.</p>
+                    <a href="SignUpGamer.html" class="cta-button">Join as Gamer</a>
+                </div>
+
+                <div class="user-type-card">
+                    <h3 class="user-type-title">Professional Testers</h3>
+                    <p>Access game code and provide in-depth technical analysis. Your expertise helps developers identify and fix issues before release, ensuring the highest quality gaming experience for players worldwide.</p>
+                    <a href="SignUpTester.html" class="cta-button">Join as Tester</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section">
+            <h2 class="section-title">Why Choose Our Platform</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">✓ Comprehensive testing ecosystem with three user types</li>
+                <li style="margin-bottom: 1rem;">✓ Fair compensation for gamers and testers</li>
+                <li style="margin-bottom: 1rem;">✓ Advanced tools for professional testers</li>
+                <li style="margin-bottom: 1rem;">✓ Direct feedback loop between developers and users</li>
+                <li style="margin-bottom: 1rem;">✓ Secure and reliable platform</li>
+                <li style="margin-bottom: 1rem;">✓ Global community of gaming enthusiasts</li>
+            </ul>
+        </section>
+
+        <!-- Join Us Section -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-title">Join Our Growing Community</h2>
+            <p style="margin-bottom: 2rem;">Be part of the future of game development and testing. Whether you're a developer, gamer, or professional tester, we have a place for you in our community.</p>
+            <a href="SignIn.html" class="cta-button">Get Started Now</a>
+        </section>
+    </div>
+</body>
+</html>

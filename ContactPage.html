@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - Gaming Testing Platform</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6b46c1;
+            --secondary-color: #2d3748;
+            --accent-color: #9f7aea;
+            --background-dark: #1a202c;
+            --text-light: #f7fafc;
+            --text-gray: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            background: var(--background-dark);
+            color: var(--text-light);
+            font-family: 'Exo', sans-serif;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            min-width: 200px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Contact Support</h1>
+            <p class="subtitle">We're here to help! Fill out the form below and we'll get back to you as soon as possible.</p>
+        </header>
+
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userType">User Type</label>
+                <select id="userType" name="userType" required>
+                    <option value="">Select your role</option>
+                    <option value="gamer">Gamer</option>
+                    <option value="tester">Tester</option>
+                    <option value="developer">Developer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+
+        <a href="HelpPage.html" class="back-link">← Back to Help Center</a>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                userType: document.getElementById('userType').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                } else {
+                    alert('There was an error sending your message. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+    </script>
+
+</body>
+</html> 
