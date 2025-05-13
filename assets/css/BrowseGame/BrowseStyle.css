@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: Bahnschrift;
+  background-color: #000;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #000;
+  overflow: hidden;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #575757;
+  color: white;
+}
+
+/* Slideshow Styles */
+.carousel-container {
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-image.active {
+  display: block;
+}
+
+/* Fixed Text Styling */
+.carousel-text {
+  position:relative;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, rgb(211, 127, 211), rgb(154, 188, 252));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorShift 4s ease-in-out infinite;
+  letter-spacing: 2px;
+  font-size: 5em;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: floralwhites;
+  z-index: 1;
+  padding-left: 50px;
+}
+
+/*Cards CSS*/
+.card-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+.card-carousel::-webkit-scrollbar {
+  display: none;
+}
+.card-carousel img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+.card-carousel img:hover {
+  transform: scale(1.05);
+}
+
+.logotext {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgb(211, 127, 211), rgb(154, 188, 252));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorShift 4s ease-in-out infinite;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  padding-left: 50px;
+}
+
+@keyframes colorShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Multiple layered shadow for maximum readability */
+.text-shadow-multi {
+  text-shadow: 
+      1px 1px 0 rgba(0, 0, 0, 0.5),
+      -1px -1px 0 rgba(0, 0, 0, 0.5),
+      1px -1px 0 rgba(0, 0, 0, 0.5),
+      -1px 1px 0 rgba(0, 0, 0, 0.5);
+}
