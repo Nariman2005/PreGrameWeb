@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Planet - Professional Tester</title>
+    <link rel="stylesheet" href="css/plans-styles.css">
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <h1 class="main-title">CHOOSE YOUR PLANET</h1>
+        <div class="plans-container">
+            <!-- Bug Buster Recruit -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">Bug Buster Recruit</h2>
+                    <div class="plan-price">$0</div>
+                </div>
+                <ul class="features-list">
+                    <li>Test up to 2 games/month</li>
+                    <li>Basic profile with qualifications</li>
+                    <li>Basic feedback tools</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Bug Buster Recruit', 0)">Select Plan</button>
+            </div>
+            <!-- Glitch Guardian -->
+            <div class="plan-card premium">
+                <div class="plan-header">
+                    <h2 class="plan-name">Glitch Guardian</h2>
+                    <div class="plan-price">$21/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Test up to 10 games/month</li>
+                    <li>Advanced testing tools</li>
+                    <li>Exclusive testing guides</li>
+                    <li>Direct developer communication (monthly Q&A)</li>
+                    <li>Access to premium testing tools</li>
+                    <li>Featured tester profile</li>
+                    <li>Receive a "Verified Tester" digital certificate</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Glitch Guardian', 21)">Select Plan</button>
+            </div>
+            <!-- Grandmaster -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">Grandmaster</h2>
+                    <div class="plan-price">$67/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Unlimited game testing</li>
+                    <li>Guaranteed access to premium, high-paying tests (5x more opportunities)</li>
+                    <li>Direct collaboration with top developers</li>
+                    <li>Influence platform development</li>
+                    <li>Public recognition</li>
+                    <li>Mentorship opportunities</li>
+                    <li>Receive a prestigious "Elite Tester" framed certificate and platform recognition</li>
+                    <li>Access to beta platform features</li>
+                    <li>Premium testing tools</li>
+                    <li>API access</li>
+                    <li>Receive a prestigious "Elite Tester" certificate</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Grandmaster', 67)">Select Plan</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/plans.js"></script>
+</body>
+</html> 

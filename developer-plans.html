@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Planet - Developer</title>
+    <link rel="stylesheet" href="assets/css/payment- plan -privacy/plans-styles.css">
+</head>
+
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <h1 class="main-title">CHOOSE YOUR PLANET</h1>
+
+        <div class="plans-container">
+            <!-- Indie Scout -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">Indie Scout</h2>
+                    <div class="plan-price">$0</div>
+                </div>
+                <ul class="features-list">
+                    <li>Upload 1 game (5GB max)</li>
+                    <li>Receive standard feedback</li>
+                    <li>Basic analytics</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Indie Scout', '0')">Select Plan</button>
+            </div>
+            <!-- Beta Baron -->
+            <div class="plan-card premium">
+                <div class="plan-header">
+                    <h2 class="plan-name">Beta Baron</h2>
+                    <div class="plan-price">$17/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Upload 5 games (50GB max)</li>
+                    <li>50GB asset storage</li>
+                    <li>Access targeted testing and custom forms</li>
+                    <li>Advanced analytics</li>
+                    <li>Manage early access</li>
+                    <li>Featured game listing</li>
+                    <li>Receive a "PregamePro Developer" badge</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Beta Baron', '17')">Select Plan</button>
+            </div>
+            <!-- Franchise Founder -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">Franchise Founder</h2>
+                    <div class="plan-price">$53/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Unlimited game uploads (500GB and up)</li>
+                    <li>1TB+ asset storage</li>
+                    <li>Access targeted testing and custom forms</li>
+                    <li>Full access to all Pro features</li>
+                    <li>API access</li>
+                    <li>Legal/NDA tools</li>
+                    <li>Branding opportunities</li>
+                    <li>"Pregame Certified Studio" certificate</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Franchise Founder', '53')">Select Plan</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/plans.js"></script>
+</body>
+
+</html>

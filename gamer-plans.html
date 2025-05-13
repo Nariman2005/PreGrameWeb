@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Planet - Gamer</title>
+    <link rel="stylesheet" href="css/plans-styles.css">
+</head>
+
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <h1 class="main-title">CHOOSE YOUR PLANET</h1>
+        <div class="plans-container">
+            <!-- The Explorer -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">The Explorer</h2>
+                    <div class="plan-price">$0</div>
+                </div>
+                <ul class="features-list">
+                    <li>Play up to 2 games/month</li>
+                    <li>Provide standard feedback</li>
+                    <li>Basic feedback tools</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('The Explorer', 0)">Select Plan</button>
+            </div>
+            <!-- Game Changer -->
+            <div class="plan-card premium">
+                <div class="plan-header">
+                    <h2 class="plan-name">Game Changer</h2>
+                    <div class="plan-price">$9/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Play up to 10 games/month</li>
+                    <li>Exclusive in-game content</li>
+                    <li>Enhanced profile with gamer badges</li>
+                    <li>Limited direct developer interaction (monthly Q&A)</li>
+                    <li>Access to exclusive game servers</li>
+                    <li>Featured gamer profile</li>
+                    <li>"Premium Player" digital badge</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Game Changer', 9)">Select Plan</button>
+            </div>
+            <!-- Elite Champion -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2 class="plan-name">Elite Champion</h2>
+                    <div class="plan-price">$39/month</div>
+                </div>
+                <ul class="features-list">
+                    <li>Unlimited game access</li>
+                    <li>Deeper direct communication with developers</li>
+                    <li>Exclusive merchandise</li>
+                    <li>Significant platform currency bonus</li>
+                    <li>Influence on in-game content</li>
+                    <li>Premium gaming features</li>
+                    <li>Exclusive rewards</li>
+                    <li>"VIP Player" certificate</li>
+                </ul>
+                <button class="select-plan-btn" onclick="selectPlan('Elite Champion', 39)">Select Plan</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/plans.js"></script>
+</body>
+
+</html>
