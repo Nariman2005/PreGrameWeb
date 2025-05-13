@@ -6,10 +6,7 @@
 @import url("HomePage/roleselection.css");
 @import url("HomePage/CTA.css");
 @import url("HomePage/footer.css");
-@import url(profiles/profile.css);
-
-
-
+@import url("browse/browse.css");
 
 /* Basic body styling */
 body {

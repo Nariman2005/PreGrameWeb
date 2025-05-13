@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Games - PreGame</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Orbitron:wght@400;500;600;700;800;900&family=Play:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+    <div class="container">
+        <header>
+            <div class="head-left">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="head-right">
+                <a href="index.html">Home</a>
+                <a href="browse.html" class="active">Browse Games</a>
+                <a href="payment.html">Pricing</a>
+                <a href="gamer-profile.html">Profile</a>
+                <a href="SignUpGamer.html"><button>Join Us</button></a>
+                <a href="SignIn.html"><button>Log In</button></a>
+            </div>
+        </header>
+
+        <!-- Page Banner -->
+        <section class="page-banner">
+            <div class="banner-content">
+                <h1>Browse Games</h1>
+                <p>Discover and test the latest games from indie developers and studios</p>
+            </div>
+        </section>
+
+        <!-- Game Browse Section -->
+        <section class="game-browse">
+            <div class="browse-layout">
+                <aside class="filters">
+                    <div class="filter-section">
+                        <h3>Search</h3>
+                        <div class="search-box">
+                            <input type="text" id="game-search" placeholder="Search games...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Genre</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="action"> Action
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="adventure"> Adventure
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="rpg"> RPG
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="strategy"> Strategy
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="simulation"> Simulation
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="sports"> Sports
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="puzzle"> Puzzle
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Platform</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="pc"> PC
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="mobile"> Mobile
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="console"> Console
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="vr"> VR
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Test Phase</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="alpha"> Alpha
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="beta"> Beta
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="testing"> Testing
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="filter-button">Apply Filters</button>
+                    <button class="clear-button">Clear All</button>
+                </aside>
+
+                <main class="games-grid">
+                    <div class="sort-bar">
+                        <div class="results-count">
+                            <span>12 games found</span>
+                        </div>
+                        <div class="sort-options">
+                            <label for="sort-select">Sort by:</label>
+                            <select id="sort-select">
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="testers">Most Testers</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="games-container">
+                        <!-- Game 1 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game1.jpg" alt="Cosmic Conquest">
+                            </div>
+                            <div class="game-info">
+                                <h3>Cosmic Conquest</h3>
+                                <p>A space exploration and battle game with procedurally generated galaxies.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Stellar Studios</span>
+                                    <span><i class="fas fa-users"></i> 45 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">Action</span>
+                                    <span class="tag tag-red">Testing</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Game 2 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game2.jpg" alt="Nebula Runner">
+                            </div>
+                            <div class="game-info">
+                                <h3>Nebula Runner</h3>
+                                <p>Fast-paced racing game through colorful nebulae and dangerous asteroid fields.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Galaxy Games</span>
+                                    <span><i class="fas fa-users"></i> 32 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">Racing</span>
+                                    <span class="tag tag-purple">Beta</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Game 3 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game3.jpg" alt="Stellar Odyssey">
+                            </div>
+                            <div class="game-info">
+                                <h3>Stellar Odyssey</h3>
+                                <p>Epic space RPG with a branching narrative and diverse alien civilizations.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Nova Interactive</span>
+                                    <span><i class="fas fa-users"></i> 28 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">RPG</span>
+                                    <span class="tag tag-yellow">Alpha</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Game 4 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game4.jpg" alt="Quantum Shift">
+                            </div>
+                            <div class="game-info">
+                                <h3>Quantum Shift</h3>
+                                <p>Puzzle platformer with quantum mechanics-inspired gameplay mechanics.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Quasar Games</span>
+                                    <span><i class="fas fa-users"></i> 15 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">Puzzle</span>
+                                    <span class="tag tag-purple">Beta</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Game 5 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game5.jpg" alt="Galactic Defense">
+                            </div>
+                            <div class="game-info">
+                                <h3>Galactic Defense</h3>
+                                <p>Strategic tower defense game set across multiple planets and moons.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Orbital Studios</span>
+                                    <span><i class="fas fa-users"></i> 23 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">Strategy</span>
+                                    <span class="tag tag-red">Testing</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Game 6 -->
+                        <div class="game-card">
+                            <div class="game-image">
+                                <img src="assets/img/game6.jpg" alt="Astral Legends">
+                            </div>
+                            <div class="game-info">
+                                <h3>Astral Legends</h3>
+                                <p>Multiplayer arena combat game featuring legendary heroes from across the cosmos.</p>
+                                <div class="game-meta">
+                                    <span><i class="fas fa-user"></i> Pulsar Entertainment</span>
+                                    <span><i class="fas fa-users"></i> 37 Testers</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span class="tag tag-blue">Multiplayer</span>
+                                    <span class="tag tag-red">Testing</span>
+                                </div>
+                                <a href="#" class="btn">Start Testing</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#" class="next">Next <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-stars"></div>
+            <div class="footer-content">
+                <div class="footer-section brand">
+                    <h3>PreGame</h3>
+                    <p>Connecting developers and testers for better gaming experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="browse.html">Browse Games</a></li>
+                        <li><a href="payment.html">Pricing</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="far fa-envelope"></i> info@pregame.com</li>
+                        <li><i class="fab fa-discord"></i> PreGame Community</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Gaming Street, Tech City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-line"></div>
+                <p>&copy; 2025 PreGame. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
